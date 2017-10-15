@@ -12,6 +12,11 @@
     canceled: '已取消'
     completed: '已结束'
     grab_tip: '无'
+    merchant:
+      auth_type_0: '未实名认证'
+      auth_type_1: '实名认证'
+      auth_type_2: '个体户实名认证'
+      auth_type_3: '企业实名认证'
     hongbao:
       use_type_1: '广告参与红包'
       use_type_2: '广告分享红包'
@@ -52,6 +57,7 @@
   activerecord:
     models:
       user: "用户"
+      merchant: '商家'
       user_session: '用户会话'
       admin: "管理员"
       cpanel: '后台系统' # 此处并不存在真正意义的model，只是为了后台系统的面包屑导航根地址国际化成中文
@@ -119,6 +125,15 @@
         created_at: '注册时间'
         total_prize_count: '抽奖总次数'
         prized_count: '抽过的次数'
+      merchant:
+        logo: '商家Logo'
+        name: '名字'
+        mobile: '手机'
+        address: '地址'
+        opened: '是否启用'
+        auth_type: '认证类型'
+        balance: '余额'
+        uniq_id: 'ID'
       user_session:
         begin_time: '会话开始'
         end_time: '会话结束'
@@ -381,18 +396,6 @@
         sign_in_count: "登录次数"
         created_at: "创建时间"
         role: "角色"
-      merchant:
-        name: '名称'
-        mobile: '联系电话'
-        address: '地址'
-        note: '备注'
-        avatar: '头像'
-        intro: '简介'
-        auth_type: '认证方式'
-        verified: '是否有效'
-        password: '密码'
-        password_confirmation: '确认密码'
-        login_in_count: '登录次数'
       merchant_home_page:
         merchant_id: '所属商家'
         title: '页面标题'
