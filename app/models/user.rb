@@ -180,15 +180,15 @@ class User < ActiveRecord::Base
     self.save!
   end
   
-  def enable_pay!
-    self.supports_user_pay = true
-    self.save!
-  end
-  
-  def disable_pay!
-    self.supports_user_pay = false
-    self.save!
-  end
+  # def enable_pay!
+  #   self.supports_user_pay = true
+  #   self.save!
+  # end
+  #
+  # def disable_pay!
+  #   self.supports_user_pay = false
+  #   self.save!
+  # end
   
   def self.from_qq_auth(result)
     # auth = QQProfile.find_by(openid: result['openid'])

@@ -45,11 +45,11 @@ index do
         item "启用", unblock_cpanel_user_path(u), method: :put, data: { confirm: '你确定吗？' }
       end
     
-      if u.supports_user_pay
-        item "关闭余额抵扣", disable_pay_cpanel_user_path(u), method: :put, data: { confirm: '你确定吗？' }, class: 'danger'
-      else
-        item "开启余额抵扣", enable_pay_cpanel_user_path(u), method: :put, data: { confirm: '你确定吗？' }
-      end
+      # if u.supports_user_pay
+      #   item "关闭余额抵扣", disable_pay_cpanel_user_path(u), method: :put, data: { confirm: '你确定吗？' }, class: 'danger'
+      # else
+      #   item "开启余额抵扣", enable_pay_cpanel_user_path(u), method: :put, data: { confirm: '你确定吗？' }
+      # end
     end
     # item "删除", cpanel_user_path(u), method: :delete, data: { confirm: '你确定吗？' }
   end
