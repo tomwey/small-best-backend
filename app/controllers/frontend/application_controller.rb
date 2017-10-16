@@ -35,20 +35,6 @@ class Frontend::ApplicationController < ActionController::Base
     @meta_description = meta_description
   end
 
-  def store_location
-    puts request
-    session[:return_to] = request.url
-  end
-
-  def redirect_back_or_default(default)
-    redirect_to(session[:return_to] || default)
-    session[:return_to] = nil
-  end
-
-  def redirect_referrer_or_default(default)
-    redirect_to(request.referrer || default)
-  end
-
   def require_user
     if current_user.blank?
       # 登录
