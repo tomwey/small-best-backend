@@ -109,6 +109,7 @@
       sign_rule: '口令规则'
       offerwall_channel: '积分墙渠道'
       offerwall_channel_callback: '积分墙回调记录'
+      admin_user: '登录账号'
     attributes:
       user:
         uid: 'ID'
@@ -406,7 +407,13 @@
         title: '标题'
         body:  '内容'
         slug:  '文档标识'
-        
+      admin_user:
+        email: '邮箱'
+        password: '密码'
+        password_confirmation: '确认密码'
+        current_sign_in_at: '最新登录时间'
+        sign_in_count: '登录次数'
+        created_at: '创建时间'
     errors:
       models:
         user: "用户"
