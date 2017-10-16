@@ -53,7 +53,12 @@ class Frontend::ApplicationController < ActionController::Base
     if current_user.blank?
       # 登录
       store_location
-      redirect_to wechat_login_path
+      
+      redirect_url  = "http://b.hb.small-best.com/wx/auth/redirect_uri?url=#{wechat_redirect_uri_url}"
+      @wx_auth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{SiteConfig.wx_app_id}&redirect_uri=#{Rack::Utils.escape(redirect_url)}&response_type=code&scope=snsapi_userinfo&state=yujian#wechat_redirect"
+      
+      redirect_to @wx_auth_url
+      # redirect_to wechat_login_path
     end
   end
   
