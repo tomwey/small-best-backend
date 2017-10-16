@@ -209,7 +209,7 @@ class User < ActiveRecord::Base
       user_info_result = JSON.parse(user_info)
       
       user = User.new
-      profile = WechatProfile.new(openid: openid,
+      profile = WechatProfile.new(openid: result['openid'],
                                   nickname: user_info_result['nickname'],
                                   sex: user_info_result['sex'],
                                   language: user_info_result['language'],
