@@ -190,6 +190,11 @@ class User < ActiveRecord::Base
     self.save!
   end
   
+  def self.from_qq_auth(result)
+    # auth = QQProfile.find_by(openid: result['openid'])
+    
+  end
+  
   def self.from_wechat_auth(result)
     auth = WechatProfile.find_by(openid: result['openid'])
     if auth.blank?

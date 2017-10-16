@@ -2,6 +2,14 @@ Rails.application.routes.draw do
   # 富文本上传路由
   mount RedactorRails::Engine => '/redactor_rails'
   
+  ########### 前端app入口开始 ###########
+  namespace :frontend, path: '/' do
+    root 'home#index'
+    
+    
+  end # end frontend
+  ########### 前端app入口结束 ###########
+  
   ########### 微信公众号入口 ###########
   namespace :wechat, path: 'wx' do
     get  '/portal'      => 'portal#echo'
@@ -48,21 +56,6 @@ Rails.application.routes.draw do
     
   end
   
-  ########## 微信支付审核官方网页 ############
-  namespace :approve, path: '' do
-    root 'home#index'
-    get '/new-event' => 'home#new_event'
-    get '/charge'    => 'home#charge'
-    get '/about'    => 'home#about'
-    get '/events/:event_id/body' => 'home#event_body', as: :event_body
-  end
-  
-  ######## 积分墙服务器回调 ################
-  namespace :offerwall do
-    get '/callback'          => 'home#callback'
-    # get '/:channel_id/tasks' => 'home#tasks'
-  end
-  
   # 网页文档
   resources :pages, path: :p, only: [:show]
   
@@ -91,11 +84,11 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => 'sidekiq'
   end
   
-  # API 文档
-  mount GrapeSwaggerRails::Engine => '/apidoc'
-  # 
-  # API 路由
-  mount API::Dispatch => '/api'
+  # # API 文档
+  # mount GrapeSwaggerRails::Engine => '/apidoc'
+  # #
+  # # API 路由
+  # mount API::Dispatch => '/api'
   
   match '*path', to: 'home#error_404', via: :all
 end
