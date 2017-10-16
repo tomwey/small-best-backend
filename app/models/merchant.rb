@@ -14,4 +14,14 @@ class Merchant < ActiveRecord::Base
     end while self.class.exists?(:uniq_id => uniq_id)
   end
   
+  def tag_name=(val)
+    if val.present?
+      self.tags = val.split(',')
+    end
+  end
+  
+  def tag_name
+    tags.join(',')
+  end
+  
 end
