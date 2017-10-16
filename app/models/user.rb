@@ -202,7 +202,7 @@ class User < ActiveRecord::Base
       user_info = RestClient.get "https://api.weixin.qq.com/sns/userinfo", 
                      { :params => { 
                                     :access_token => result['access_token'],
-                                    :openid       => openid,
+                                    :openid       => result['openid'],
                                     :lang         => "zh_CN",
                                   } 
                      }
