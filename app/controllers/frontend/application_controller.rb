@@ -28,6 +28,26 @@ class Frontend::ApplicationController < ActionController::Base
     fname = %W(404 403 422 500).include?(status) ? status : 'unknown'
     render template: "/errors/#{fname}", format: [:html], handler: [:erb], status: status, layout: 'application'
   end
+  
+  helper_method :render_page_title
+  def render_page_title
+    site_name = "小优大惠"
+    @page_title || site_name
+    # content_tag(:title, title, nil, false)
+  end
+  
+  helper_method :notice_message
+  def notice_message
+    flash_messages = []
+    flash.each do |type, message|
+      type = :success if type.to_s == "notice"
+      type = :warning if type.to_s == "alert"
+      type = :danger if type.to_s == "error"
+      text = content_tag(:div, link_to("×", "#", class: "close", 'data-dismiss' => "alert") + message, class: "alert alert-#{type}", style: "margin-top: 20px;")
+      flash_messages << text if message
+    end
+    flash_messages.join("\n").html_safe
+  end
 
   def set_seo_meta(title = '', meta_keywords = '', meta_description = '')
     @page_title = "#{title}" if title && title.length > 0

@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,height=device-height">
-  <%= stylesheet_link_tag    'share', media: 'all' %>
+  <%= stylesheet_link_tag    'frontend.css', media: 'all' %>
+  <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.min.css" rel="stylesheet">
   <%= yield :styles %>
   <%= csrf_meta_tags %>
   <!--[if lt IE 9]>
@@ -15,15 +16,35 @@
   <![endif]-->
 </head>
 <body>
-
-<%= yield %>
-
+  <header class="bar bar-header">
+    <div class="title">小优大惠</div>
+  </header>
+  <% unless notice_message.blank? %>
+  <div class="container">
+    <%= notice_message %>
+  </div>
+  <% end %>
+  
+  <%= yield %>
+  
+  <div class="tabs tabs-icon-top">  
+    <a class="tab-item" href="/">  
+      <i class="icon ion-compass-outline"></i> 发现 
+    </a>
+    <a class="tab-item">  
+      <i class="icon ion-pin-outline"></i> 附近 
+    </a>
+    <a class="tab-item show-tab">  
+      <i class="icon ion-ios-person-outline"></i> 我的
+    </a>
+  </div>
 <!-- 微信JS SDK -->
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <!-- QQ 定位组件 -->
 <script src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>
 
-<%= javascript_include_tag 'share' %>
+<%= javascript_include_tag 'frontend.js' %>
 <%= yield :scripts %>
 </body>
 </html>
+
